@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The makao game!</title>
+		<script type='text/javascript' src='js/jquery-1.12.0.js'></script>
+		<script type='text/javascript' src='js/jquery-ui.js'></script>
+		<script type='text/javascript' src='js/makao.js'></script>
+		<link rel='stylesheet' type='text/css' href='css/stylesheet.css'></link>
+		<link rel='stylesheet' type='text/css' href='css/jquery-ui.css'></link>
+	</head>
+	<body>
+		<!-- Holds the list of players with their number of cards. -->
+		<ul id='players'>
+			<li class='ui-state-active'>Jan Nowak 2</li>
+			<li class='ui-state-default'>Ola Kowalska 3</li>
+			<li class='ui-state-default'>Marek Malinowski 10</li>
+		</ul>
+
+		<!-- Cards are dropped on the table. -->
+		<ul id='table' class='connected'>
+			<li class='ui-state-disabled'>2&#9824;</li>
+		</ul>
+
+		<!-- Contains the list of cards that the user has in his hands. -->
+		<ul id='hand' class='connected'>
+			<li class='ui-state-default'>2&#9824;</li>
+			<li class='ui-state-default'>4&#9824;</li>
+			<li class='ui-state-default'>6&#9824;</li>
+		</ul>
+
+		<!-- For submitting the list of cards which are put -->
+		<button>Put cards</button>
+	</body>
+</html>

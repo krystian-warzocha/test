@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+ 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/cupertino/jquery-ui.css" />
+ 
+	<style>
+		#list {
+			list-style: none;
+			padding-left: 0;
+		}
+ 
+		#list .sort-handle {
+			display: none;
+		}
+ 
+		#list .ui-selected .sort-handle
+		 {
+			display: inline;
+			padding: 0 0.5em;
+			cursor: pointer;
+		}
+ 
+		li.ui-selected {
+			background-color: #8888cc;
+			color: white;
+			font-weight: bold;
+			background-image: none;
+		}
+		li.ui-selecting {
+			background-color: #ccccff;
+			color: white;
+			background-image: none;
+		}
+ 
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 1</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 2</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 3</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 4</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 5</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 6</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 7</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 8</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 9</li>
+		<li class="ui-widget-content"><span class="sort-handle">&#8225;</span>Item 10</li>
+	</ul>
+	
+	<script>
+		$(function() {
+			$('#list').selectable({
+				cancel: '.sort-handle'
+			}).sortable({
+				items: "> li",
+				handle: '.sort-handle',
+				helper: function(e, item) {
+					if ( ! item.hasClass('ui-selected') ) {
+						item.parent().children('.ui-selected').removeClass('ui-selected');
+						item.addClass('ui-selected');
+					}
+ 
+					var selected = item.parent().children('.ui-selected').clone();
+					item.data('multidrag', selected).siblings('.ui-selected').remove();
+					return $('<li/>').append(selected);
+				},
+				stop: function(e, ui) {
+					var selected = ui.item.data('multidrag');
+					ui.item.after(selected);
+					ui.item.remove();
+				}
+			});
+		});
+	</script>
+</body>

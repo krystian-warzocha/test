@@ -1,0 +1,22 @@
+#players, #table, #hand {
+	border: 1px solid #eee;
+	width: 222px;
+	min-height: 20px;
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 0 0 0;
+	float: left;
+	margin-right: 10px;
+}
+
+#players li, #table li, #hand li {
+	margin: 0 5px 5px 5px;
+	padding: 5px;
+	font-size: 1.2em;
+	width: 200px;
+}
+
+.ui-state-highlight { 
+	height: 1.2em; 
+	line-height: 1em;
+}
